@@ -1,22 +1,201 @@
 {
   "domain": "tourism-standard-recognition",
-  "version": 1,
+  "version": 2,
   "sample_id": "record-012",
   "actors": [
     "东盟旅行社",
-    "国内文旅企业",
+    "国内景区",
+    "支付机构",
+    "接待企业",
     "行业协会",
+    "认证机构",
     "旅游主管部门"
   ],
   "facts": [
     "便利化活动探索入境旅游服务标准化发展路径",
     "参会方来自主管部门、东盟行业协会、金融机构和文旅企业",
-    "跨境支付与数字文旅属于核心议题"
+    "跨境支付与数字文旅属于核心议题",
+    "服务标识按适用地区和有效期限限定范围，不与各企业自我声明混同",
+    "主管部门能够区分自我声明、第三方认证与正式互认",
+    "标准修订、认证暂停、抽查不合格、机构退出或跨境关系撤销时，在售产品必须准确更新"
   ],
   "constraints": [
     "多地服务标准",
     "合规证据核验",
     "互认关系",
-    "在售产品影响"
+    "在售产品影响",
+    "标识可追溯至核验记录与责任主体"
+  ],
+  "service_items": [
+    { "id": "multilingual-reception", "name": "多语种接待" },
+    { "id": "payment-assistance", "name": "支付帮助" },
+    { "id": "emergency-contact", "name": "应急联络" }
+  ],
+  "regions": [
+    { "id": "cn-gx-guilin", "name": "广西桂林" },
+    { "id": "cn-yn-kunming", "name": "云南昆明" }
+  ],
+  "recognition_levels": [
+    { "id": "self-declaration", "name": "自我声明", "rank": 1 },
+    { "id": "third-party-certification", "name": "第三方认证", "rank": 2 },
+    { "id": "formal-mutual-recognition", "name": "正式互认", "rank": 3 }
+  ],
+  "standards": [
+    { "id": "inbound-service-standard", "version": "2024-b", "status": "superseded" },
+    { "id": "inbound-service-standard", "version": "2025-a", "status": "current" }
+  ],
+  "certification_bodies": [
+    {
+      "id": "cert-body-01",
+      "name": "示例认证机构甲",
+      "regions": ["cn-gx-guilin", "cn-yn-kunming"],
+      "status": "active"
+    },
+    {
+      "id": "cert-body-02",
+      "name": "示例认证机构乙",
+      "regions": ["cn-yn-kunming"],
+      "status": "suspended"
+    }
+  ],
+  "regional_profiles": [
+    {
+      "region": "cn-gx-guilin",
+      "service_terms": "terms-2025-gx",
+      "language_versions": ["zh-CN", "en", "th", "vi"],
+      "evidence_requirements": [
+        "multilingual-staff-roster",
+        "emergency-hotline-drill",
+        "service-terms-review"
+      ],
+      "certification_bodies": ["cert-body-01"]
+    },
+    {
+      "region": "cn-yn-kunming",
+      "service_terms": "terms-2025-yn",
+      "language_versions": ["zh-CN", "en", "lo", "my"],
+      "evidence_requirements": [
+        "payment-terminal-audit",
+        "emergency-hotline-drill"
+      ],
+      "certification_bodies": ["cert-body-01", "cert-body-02"]
+    }
+  ],
+  "marks": [
+    {
+      "id": "mark-001",
+      "product_id": "prod-gx-05",
+      "product_name": "桂林山水入境五日游",
+      "supplier": "示例接待企业（桂林）",
+      "service_items": ["multilingual-reception", "emergency-contact"],
+      "regions": ["cn-gx-guilin"],
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "recognition_level": "formal-mutual-recognition",
+      "standard_version": "2025-a",
+      "status": "active"
+    },
+    {
+      "id": "mark-002",
+      "product_id": "prod-yn-03",
+      "product_name": "昆明滇池入境三日游",
+      "supplier": "示例景区运营（昆明）",
+      "service_items": ["payment-assistance"],
+      "regions": ["cn-yn-kunming"],
+      "valid_from": "2026-02-01",
+      "valid_to": "2026-12-31",
+      "recognition_level": "third-party-certification",
+      "standard_version": "2025-a",
+      "status": "active"
+    },
+    {
+      "id": "mark-003",
+      "product_id": "prod-gx-09",
+      "product_name": "桂林溶洞半日游",
+      "supplier": "示例接待企业（桂林）",
+      "service_items": ["emergency-contact"],
+      "regions": ["cn-gx-guilin"],
+      "valid_from": "2026-03-01",
+      "valid_to": "2026-09-30",
+      "recognition_level": "self-declaration",
+      "standard_version": "2024-b",
+      "status": "active"
+    }
+  ],
+  "verification_records": [
+    {
+      "id": "vr-001",
+      "mark_id": "mark-001",
+      "kind": "on-site",
+      "certification_body": "cert-body-01",
+      "region": "cn-gx-guilin",
+      "result": "pass",
+      "covers": ["multilingual-staff-roster", "emergency-hotline-drill"],
+      "date": "2026-03-15",
+      "responsible_party": "行业协会互认秘书处"
+    },
+    {
+      "id": "vr-002",
+      "mark_id": "mark-001",
+      "kind": "third-party",
+      "certification_body": "cert-body-01",
+      "region": "cn-gx-guilin",
+      "result": "pass",
+      "covers": ["service-terms-review"],
+      "date": "2026-02-20",
+      "responsible_party": "示例认证机构甲"
+    },
+    {
+      "id": "vr-003",
+      "mark_id": "mark-002",
+      "kind": "third-party",
+      "certification_body": "cert-body-02",
+      "region": "cn-yn-kunming",
+      "result": "pass",
+      "covers": ["payment-terminal-audit"],
+      "date": "2026-04-10",
+      "responsible_party": "示例认证机构乙"
+    },
+    {
+      "id": "vr-004",
+      "mark_id": "mark-003",
+      "kind": "self-declaration",
+      "certification_body": null,
+      "region": "cn-gx-guilin",
+      "result": "declared",
+      "covers": [],
+      "date": "2026-05-01",
+      "responsible_party": "示例接待企业（桂林）"
+    }
+  ],
+  "change_events": [
+    {
+      "id": "ce-001",
+      "type": "standard-revised",
+      "date": "2026-07-01",
+      "standard_version": "2025-a",
+      "note": "2025-a 版标准修订，沿用该版本的标识需更新"
+    },
+    {
+      "id": "ce-002",
+      "type": "certification-suspended",
+      "date": "2026-08-10",
+      "certification_body": "cert-body-02",
+      "note": "示例认证机构乙被暂停认证资格"
+    },
+    {
+      "id": "ce-003",
+      "type": "spot-check-failed",
+      "date": "2026-08-20",
+      "mark_ids": ["mark-003"],
+      "note": "抽查发现 mark-003 材料与现场不符"
+    },
+    {
+      "id": "ce-004",
+      "type": "cross-border-revoked",
+      "date": "2026-09-01",
+      "regions": ["cn-yn-kunming"],
+      "note": "昆明方向跨境互认关系撤销"
+    }
   ]
 }
