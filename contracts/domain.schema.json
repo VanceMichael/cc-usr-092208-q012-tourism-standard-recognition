@@ -7,6 +7,9 @@
     "version",
     "sample_id",
     "actors",
+    "services",
+    "recognition_levels",
+    "change_triggers",
     "facts",
     "constraints"
   ],
@@ -24,6 +27,27 @@
       "minLength": 1
     },
     "actors": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "services": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "recognition_levels": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "change_triggers": {
       "type": "array",
       "minItems": 2,
       "items": {
